@@ -1,0 +1,17 @@
+name: Test Project
+on:
+  workflow_dispatch:
+jobs:
+  update_build_number:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Generate build number
+        id: generate_build_number
+        run: |
+          current_date=$(date +'%Y%m%d')
+          timestamp=$(date +'%H%M%S')
+          echo "BUILD_NUMBER=${current_date}-${timestamp}"
